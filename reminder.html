@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminders - SarvInsure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #343a40;
+        }
+
+        .reminder-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .reminder-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1 1 calc(33.333% - 1rem);
+            padding: 1.5rem;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            transition: background-color 0.5s, color 0.5s, transform 0.5s;
+        }
+
+        .reminder-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 1rem;
+        }
+
+        .reminder-item:hover {
+            background-color: white;
+            color: #007bff;
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.5s, transform 0.5s;
+        }
+
+        button:hover {
+            background-color: #003d7a;
+            transform: scale(1.1);
+        }
+
+        .add-reminder-form {
+            margin-top: 2rem;
+        }
+
+        .add-reminder-form input,
+        .add-reminder-form button {
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        .add-reminder-form input {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-icons img {
+            width: 100px;
+            height: 40px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SarvInsure</h1>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="index.html">Profile</a>
+        <a href="policy.html">Policies</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <main>
+        <section class="section">
+            <h2>Reminders</h2>
+            <ul class="reminder-list" id="reminder-list">
+                <li class="reminder-item">
+                    <span>Renew Auto Insurance<br>Due: 2024-12-31</span>
+                    <img src="placeholder.jpg" alt="Reminder">
+                    <button onclick="markAsDone(this)">Mark as Done</button>
+                    <button onclick="deleteReminder(this)" style="margin-left: 1rem; background-color: red;">Delete</button>
+                </li>
+                <li class="reminder-item">
+                    <span>Renew Health Insurance<br>Due: 2025-01-15</span>
+                    <img src="placeholder.jpg" alt="Reminder">
+                    <button onclick="markAsDone(this)">Mark as Done</button>
+                    <button onclick="deleteReminder(this)" style="margin-left: 1rem; background-color: red;">Delete</button>
+                </li>
+                <li class="reminder-item">
+                    <span>Renew Home Insurance<br>Due: 2025-03-01</span>
+                    <img src="placeholder.jpg" alt="Reminder">
+                    <button onclick="markAsDone(this)">Mark as Done</button>
+                    <button onclick="deleteReminder(this)" style="margin-left: 1rem; background-color: red;">Delete</button>
+                </li>
+            </ul>
+            <form class="add-reminder-form" onsubmit="addNewReminder(event)">
+                <input type="text" id="reminder-title" placeholder="Reminder Title" required>
+                <input type="date" id="reminder-date" required>
+                <button type="submit">Add Reminder</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SarvInsure. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="https://www.bajajfinserv.in/insurance"><img src="bajaj-finance.webp" alt="Insurance 1 Logo"></a>
+            <a href="https://www.hdfclife.com/"><img src="hdfc.png" alt="Insurance 2 Logo"></a>
+            <a href="https://www.policybazaar.com/?pb_source=google&pb_medium=cpc&pb_term=Insurance%20policy&pb_campaign=Insurance_generic00Generic&gad_source"><img src="policybazar.png" alt="Insurance 3 Logo"></a>
+        </div>
+        <p> Choosing the right insurance plan is essential to safeguard your financial health.</p>
+    </footer>
+
+    <script>
+        function markAsDone(button) {
+            const item = button.parentElement;
+            item.style.backgroundColor = '#28a745';
+            item.style.color = 'white';
+            button.textContent = 'Completed';
+            button.disabled = true;
+        }
+        function deleteReminder(button) {
+            const item = button.parentElement;
+            item.remove();
+            saveReminders();
+        }
+
+        function addNewReminder(event) {
+            event.preventDefault();
+
+            const title = document.getElementById("reminder-title").value;
+            const date = document.getElementById("reminder-date").value;
+
+            const newReminder = document.createElement("li");
+            newReminder.className = "reminder-item";
+            newReminder.innerHTML = `
+                <span>${title}<br>Due: ${date}</span>
+                <img src="placeholder.jpg" alt="Reminder">
+                <button onclick="markAsDone(this)">Mark as Done</button>
+                <button onclick="deleteReminder(this)" style="margin-left: 1rem; background-color: red;">Delete</button>
+            `;
+
+            document.getElementById("reminder-list").appendChild(newReminder);
+
+            document.getElementById("reminder-title").value = "";
+            document.getElementById("reminder-date").value = "";
+
+            saveReminders();
+        }
+
+        function saveReminders() {
+            const reminderList = document.getElementById("reminder-list");
+            const reminders = Array.from(reminderList.children).map((item) => {
+                const spanText = item.querySelector("span").textContent;
+                const [title, dueDate] = spanText.split("Due:").map((text) => text.trim());
+                const isCompleted = item.querySelector("button").disabled;
+
+                return { title, dueDate, isCompleted };
+            });
+
+            localStorage.setItem("reminders", JSON.stringify(reminders));
+        }
+
+        function loadReminders() {
+            const savedReminders = JSON.parse(localStorage.getItem("reminders") || "[]");
+            const reminderList = document.getElementById("reminder-list");
+
+            savedReminders.forEach(({ title, dueDate, isCompleted }) => {
+                const newReminder = document.createElement("li");
+                newReminder.className = "reminder-item";
+                newReminder.style.backgroundColor = isCompleted ? "#28a745" : "#007bff";
+                newReminder.style.color = isCompleted ? "white" : "white";
+
+                newReminder.innerHTML = `
+                    <span>${title}<br>Due: ${dueDate}</span>
+                    <img src="placeholder.jpg" alt="Reminder">
+                    <button onclick="markAsDone(this)" ${isCompleted ? "disabled" : ""}>
+                        ${isCompleted ? "Completed" : "Mark as Done"}
+                    </button>
+                    <button onclick="deleteReminder(this)" style="margin-left: 1rem; background-color: red;">Delete</button>
+                `;
+
+                reminderList.appendChild(newReminder);
+            });
+        }
+
+        function highlightUpcomingReminders() {
+            const today = new Date();
+            const reminderList = document.getElementById("reminder-list");
+            Array.from(reminderList.children).forEach((item) => {
+                const dueDate = new Date(item.querySelector("span").textContent.split("Due:")[1].trim());
+                const timeDiff = (dueDate - today) / (1000 * 60 * 60 * 24);
+
+                if (timeDiff > 0 && timeDiff <= 7) {
+                    item.style.border = "2px solid yellow";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

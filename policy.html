@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies - SarvInsure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        header .customer-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header .customer-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #343a40;
+        }
+
+        .policy-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .policy-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .policy-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .policy-item div {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .policy-name {
+            text-align: left;
+        }
+
+        .policy-date {
+            text-align: right;
+        }
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-icons img {
+            width: 100px;
+            height: 40px;
+            margin: 0 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #add-policy-form {
+            display: none;
+            margin-top: 1rem;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        #add-policy-form input {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            width: 100%;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        #add-policy-form button {
+            width: 100%;
+        }
+
+        .policybazaar-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .policybazaar-link img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 0.5rem;
+        }
+        .insights {
+            position: center-bottom;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-item {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SarvInsure</h1>
+        <div class="customer-info">
+            <img src="IMG-20241228-WA0021.jpg" alt="Customer Picture">
+            <span>Sarvagya</span>
+        </div>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="policy.html">Policies</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <main>
+        
+        <section class="section">
+            <h2>Your Policies</h2>
+            <ul id="policy-list" class="policy-list">
+                <li class="policy-item">
+                    <div class="policy-name">Auto Insurance</div>
+                    <div class="policy-date">Renewal Date: 2024-12-31</div>
+                    <button onclick="editPolicy(this)">Edit</button>
+                </li>
+                <li class="policy-item">
+                    <div class="policy-name">Health Insurance</div>
+                    <div class="policy-date">Renewal Date: 2025-01-15</div>
+                    <button onclick="editPolicy(this)">Edit</button>
+                </li>
+                <li class="policy-item">
+                    <div class="policy-name">Home Insurance</div>
+                    <div class="policy-date">Renewal Date: 2025-03-01</div>
+                    <button onclick="editPolicy(this)">Edit</button>
+                </li>
+            </ul>
+            <button onclick="toggleAddPolicyForm()">Add New Policy</button>
+            <div id="add-policy-form">
+                <input type="text" id="policy-name" placeholder="Policy Name">
+                <input type="text" id="policy-specification" placeholder="Policy Specification">
+                <input type="date" id="policy-renewal-date">
+                <button onclick="addPolicy()">Save Policy</button>
+                <div class="policybazaar-link">
+                    <a href="https://www.policybazaar.com" target="_blank">
+                        Visit PolicyBazaar
+                    </a>
+                    <img src="policybazar.png" alt="PolicyBazaar Logo">
+                </div>
+            </div>
+        </section>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="promotion1.jpg" alt="Insight 1">
+                <img src="promotion2.jpg" alt="Insight 2">
+                <img src="promotion3.jpg" alt="Insight 3">
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="prevSlide()">&#10094;</button>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+        <section class="section insights">
+            <h2>Useful Insights</h2>
+            <div class="insight-item">
+                <p><strong>Tip:</strong> Renew your policies on time to avoid penalties or coverage gaps.</p>
+            </div>
+            <div class="insight-item">
+                <p><strong>Reminder:</strong> Health insurance premiums are tax-deductible in many regions. Check your eligibility!</p>
+            </div>
+            <div class="insight-item">
+                <p><strong>Advice:</strong> Review your policies annually to ensure adequate coverage for changing needs.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SarvInsure. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="https://www.bajajfinserv.in/insurance"><img src="bajaj-finance.webp" alt="Insurance 1 Logo"></a>
+            <a href="https://www.hdfclife.com/"><img src="hdfc.png" alt="Insurance 2 Logo"></a>
+            <a href="https://www.policybazaar.com/?pb_source=google&pb_medium=cpc&pb_term=Insurance%20policy&pb_campaign=Insurance_generic00Generic&gad_source"><img src="policybazar.png" alt="Insurance 3 Logo"></a>
+        </div>
+        <p> Choosing the right insurance plan is essential to safeguard your financial health.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const totalSlides = slides.length;
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            const offset = -currentSlide * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        window.onload = function () {
+            showSlide(0);
+        };
+        function editPolicy(button) {
+            const policyItem = button.parentElement;
+            const policyName = prompt("Enter new policy name:", policyItem.querySelector(".policy-name").textContent);
+            const renewalDate = prompt("Enter new renewal date (YYYY-MM-DD):", policyItem.querySelector(".policy-date").textContent.split(": ")[1]);
+            if (policyName && renewalDate) {
+                policyItem.querySelector(".policy-name").textContent = policyName;
+                policyItem.querySelector(".policy-date").textContent = `Renewal Date: ${renewalDate}`;
+            }
+        }
+
+        function toggleAddPolicyForm() {
+            const form = document.getElementById("add-policy-form");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        }
+
+        function addPolicy() {
+            const name = document.getElementById("policy-name").value;
+            const specification = document.getElementById("policy-specification").value;
+            const renewalDate = document.getElementById("policy-renewal-date").value;
+            if (name && specification && renewalDate) {
+                const policyList = document.getElementById("policy-list");
+                const newItem = document.createElement("li");
+                newItem.className = "policy-item";
+                newItem.innerHTML = `
+                    <div class="policy-name">${name}</div>
+                    <div class="policy-date">Renewal Date: ${renewalDate}</div>
+                    <button onclick="editPolicy(this)">Edit</button>
+                `;
+                policyList.appendChild(newItem);
+                toggleAddPolicyForm();
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+</body>
+</html>

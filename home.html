@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SarvInsure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: yellow;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .main-content {
+            flex: 3;
+            position: center;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .slider-container {
+            position: fixed;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 200px;
+
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 200px;
+            width: 150px
+             /* Reduced height */
+            background-color: rgba(0, 0, 0, 0.6); /* 60% transparency */
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .slider-indicators div {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .slider-indicators div.active {
+            opacity: 0.3;
+            background-color: #007bff;
+        }
+
+        
+
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .testimonial-content {
+            width: 80%;
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease;
+        }
+
+        .testimonial-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 1rem;
+        }
+
+        .testimonial-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .testimonial-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .testimonial-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .testimonial-indicators span {
+            width: 10px;
+            height: 10px;
+            background: #dee2e6;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .testimonial-indicators .active {
+            background: #007bff;
+        }
+        floating-video {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px; /* Slightly larger area */
+            height: 250px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px; /* Increased grab area */
+        }
+        .floating-video iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            border: none;
+            
+        }
+        .floating-video:active {
+            cursor: grabbing;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-icons img {
+            width: 100px;
+            height: 40px;
+            margin: 0 10px;
+        }
+
+        .floating-video {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 70%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            z-index: 1001;
+        }
+
+        .video-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-video {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .health-insurance {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .health-insurance .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .health-insurance img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .advantages, .why-online {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .advantage, .why-buy {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .advantage img, .why-buy img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        /* Login and Sign Up Page Style */
+        .login-section {
+            display: none;
+            position: fixed;
+            top: 20%;
+            right: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            z-index: 1000;
+            width: 300px;
+        }
+
+        .login-section input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .login-section button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .login-section button:hover {
+            background-color: #0056b3;
+        }
+
+        .login-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 1001;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.active, .login-section.active {
+            display: block;
+        }
+
+        .form-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .form-tabs button {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            padding: 0.5rem 1rem;
+            width: 48%;
+            cursor: pointer;
+        }
+
+        .form-tabs button.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SarvInsure</h1>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="index.html">Profile</a>
+        <a href="policy.html">Policies</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <button class="login-btn" onclick="toggleLogin()">Login</button>
+
+    <!-- Overlay for login form -->
+    <div class="overlay" onclick="toggleLogin()"></div>
+
+    <!-- Login and Sign Up Form -->
+    <section class="login-section">
+        <div class="form-tabs">
+            <button id="loginTab" class="active" onclick="toggleForm('login')">Login</button>
+            <button id="signupTab" onclick="toggleForm('signup')">Sign Up</button>
+        </div>
+        
+        <form id="loginForm" class="form-content">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <form id="signupForm" class="form-content" style="display: none;">
+            <input type="text" id="signupName" placeholder="Full Name" required>
+            <input type="email" id="signupEmail" placeholder="Email" required>
+            <input type="password" id="signupPassword" placeholder="Password" required>
+            <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p><a href="forgot-password.html">Forgot Password?</a></p>
+        <p>Already have an account? <a href="javascript:void(0)" onclick="toggleForm('login')">Login</a></p>
+    </section>
+
+    <main>
+        <div class="main-content">
+            <section class="section">
+                <h2>Welcome to SarvInsure</h2>
+                <p>Manage and keep track of your insurance policies effortlessly.</p>
+                <p>Insurance Tracker is your one-stop solution to streamline </p>
+                <p>Whether you’re managing personal, family, or business insurance plans</p>
+            </section>
+
+            <!-- Health Insurance Section -->
+            <section class="health-insurance">
+                <div class="content">
+                    <img src="health-insurance-icon-png-3.png" alt="Health Insurance Icon">
+                    <h3>Health Insurance</h3>
+                    <p>Why Do I Need Health Insurance?</p>
+                    <p>Health insurance is a critical safety net for unforeseen medical expenses.</p>
+                </div>
+                <div class="content">
+                    <img src="advantages.png" alt="Advantages Icon">
+                    <h3>Advantages Of Insurance</h3>
+                    <p>Provides financial protection and peace of mind against unexpected health expenses.</p>
+                </div>
+            </section>
+
+            <!-- Why Buy Health Insurance Online Section -->
+            <section class="why-online">
+                <div class="why-buy">
+                    <img src="download.png" alt="Online Icon">
+                    <h3>Why Should I Buy Health Insurance Online?</h3>
+                    <p>Convenience and better comparison for the best rates.</p>
+                </div>
+                <div class="why-buy">
+                    <img src="trusted.png" alt="Trusted Icon">
+                    <h3>Trusted Platforms</h3>
+                    <p>Online platforms offer secure and trusted health insurance plans.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>What Our Partners Are Saying</h2>
+                <div class="testimonials">
+                    <div class="testimonial-content" id="testimonial">
+                        <h3>Partner A</h3>
+                        <p>"SarvInsure made managing our policies seamless and efficient."</p>
+                    </div>
+                    <div class="testimonial-buttons">
+                        <button onclick="prevTestimonial()">&#8249; Prev</button>
+                        <button onclick="nextTestimonial()">Next &#8250;</button>
+                    </div>
+                    <div class="testimonial-indicators" id="indicators">
+                        <!-- Indicators will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+     <div class="slider-container">
+    <div class="slider" id="slider1">
+        <img src="IMG-20241228-WA0010.jpg" alt="Slide 1">
+        <img src="IMG-20241228-WA0012.jpg" alt="Slide 2" style="display:none;">
+        <img src="IMG-20241228-WA0013.jpg" alt="Slide 3" style="display:none;">
+        <div class="slider-indicators">
+            <div class="active" onclick="showSlide(1, 0)"></div>
+            <div onclick="showSlide(1, 1)"></div>
+            <div onclick="showSlide(1, 2)"></div>
+        </div>
+    </div>
+
+    <div class="slider" id="slider2">
+        <img src="IMG-20241228-WA0014.jpg" alt="Slide A">
+        <img src="IMG-20241228-WA0020.jpg" alt="Slide B" style="display:none;">
+        <img src="IMG-20241228-WA0021.jpg" alt="Slide C" style="display:none;">
+        <div class="slider-indicators">
+            <div class="active" onclick="showSlide(2, 0)"></div>
+            <div onclick="showSlide(2, 1)"></div>
+            <div onclick="showSlide(2, 2)"></div>
+        </div>
+    </div>
+</div>
+
+           
+    </main>
+     <div class="floating-video" id="floatingVideo">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rV-9-d4xS9k?si=4c83Tr36Ed5jLiTv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    
+
+    <footer>
+        <p>&copy; 2024 SarvInsure. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="https://www.bajajfinserv.in/insurance"><img src="bajaj-finance.webp" alt="Insurance 1 Logo"></a>
+            <a href="https://www.hdfclife.com/"><img src="hdfc.png" alt="Insurance 2 Logo"></a>
+            <a href="https://www.policybazaar.com/?pb_source=google&pb_medium=cpc&pb_term=Insurance%20policy&pb_campaign=Insurance_generic00Generic&gad_source"><img src="policybazar.png" alt="Insurance 3 Logo"></a>
+        </div>
+        <p> Choosing the right insurance plan is essential to safeguard your financial health.</p>
+    </footer>
+
+    <script>
+        
+        let currentSlides = [0, 0];
+
+    function showSlide(sliderIndex, slideIndex) {
+        const slider = document.getElementById(`slider${sliderIndex}`);
+        const slides = slider.querySelectorAll('img');
+        const indicators = slider.querySelectorAll('.slider-indicators div');
+
+        slides[currentSlides[sliderIndex - 1]].style.display = 'none';
+        indicators[currentSlides[sliderIndex - 1]].classList.remove('active');
+
+        slides[slideIndex].style.display = 'block';
+        indicators[slideIndex].classList.add('active');
+
+        currentSlides[sliderIndex - 1] = slideIndex;
+    } 
+        const floatingVideo = document.getElementById('floatingVideo');
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        floatingVideo.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - floatingVideo.getBoundingClientRect().left;
+            offsetY = e.clientY - floatingVideo.getBoundingClientRect().top;
+            floatingVideo.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const newX = e.clientX - offsetX;
+                const newY = e.clientY - offsetY;
+                floatingVideo.style.left = `${newX}px`;
+                floatingVideo.style.top = `${newY}px`;
+                floatingVideo.style.bottom = 'auto'; // Reset bottom to allow free movement
+                floatingVideo.style.right = 'auto'; // Reset right to allow free movement
+                floatingVideo.style.position = 'fixed';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            floatingVideo.style.cursor = 'grab';
+        });
+        const testimonials = [
+            { name: "Sarvagya Pathak", feedback: "SarvInsure made managing our policies seamless and efficient." },
+            { name: "Harshit ", feedback: "Their platform is intuitive and easy to use." },
+            { name: "Anurag", feedback: "A reliable solution for all insurance needs." },
+        ];
+
+        const images = document.querySelectorAll('#imageSlider img');
+        let currentImage = 0;
+        let currentTestimonial = 0;
+
+        function updateTestimonial() {
+            const testimonial = document.getElementById("testimonial");
+            testimonial.style.opacity = 0;
+            setTimeout(() => {
+                testimonial.innerHTML = ` 
+                    <h3>${testimonials[currentTestimonial].name}</h3>
+                    <p>"${testimonials[currentTestimonial].feedback}"</p>
+                `;
+                testimonial.style.opacity = 1;
+            }, 500);
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function updateIndicators() {
+            const indicators = document.getElementById("indicators");
+            indicators.innerHTML = "";
+            for (let i = 0; i < testimonials.length; i++) {
+                const span = document.createElement("span");
+                if (i === currentTestimonial) {
+                    span.classList.add("active");
+                }
+                span.addEventListener("click", () => {
+                    currentTestimonial = i;
+                    updateTestimonial();
+                    updateIndicators();
+                });
+                indicators.appendChild(span);
+            }
+        }
+
+        function toggleLogin() {
+            document.querySelector(".overlay").classList.toggle("active");
+            document.querySelector(".login-section").classList.toggle("active");
+        }
+
+        function toggleForm(form) {
+            if (form === 'login') {
+                document.getElementById("loginForm").style.display = "block";
+                document.getElementById("signupForm").style.display = "none";
+                document.getElementById("loginTab").classList.add("active");
+                document.getElementById("signupTab").classList.remove("active");
+            } else {
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("signupForm").style.display = "block";
+                document.getElementById("loginTab").classList.remove("active");
+                document.getElementById("signupTab").classList.add("active");
+            }
+        }
+
+        function toggleVideoModal() {
+            document.getElementById("videoModal").classList.toggle("active");
+        }
+
+        setInterval(() => {
+            currentImage = (currentImage + 1) % images.length;
+            images.forEach((image, index) => {
+                image.style.transform = `translateX(-${currentImage * 100}%)`;
+            });
+        }, 3000);
+
+        updateTestimonial();
+        updateIndicators();
+    </script>
+</body>
+</html>

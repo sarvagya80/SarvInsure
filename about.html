@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SarvInsure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .section h2, .section h3 {
+            color: #343a40;
+        }
+
+        .section p {
+            line-height: 1.6;
+            color: #495057;
+        }
+
+        ul {
+            padding-left: 1rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        ul li::before {
+            content: "✔️";
+            margin-right: 0.5rem;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 2px solid #007bff;
+        }
+
+        .team-member-info {
+            flex: 1;
+        }
+
+        .team-member-info h4 {
+            margin: 0 0 0.5rem 0;
+            color: #007bff;
+        }
+
+        .team-member-info p {
+            margin: 0 0 0.5rem 0;
+            color: #495057;
+        }
+
+        .team-member-links a {
+            margin-right: 0.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .team-member-links a:hover {
+            color: #0056b3;
+        }
+
+        .collapsible {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .collapsible:after {
+            content: "▼";
+            font-size: 1rem;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .collapsible.active:after {
+            content: "▲";
+        }
+
+        .content {
+            padding: 0 1rem;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            border-radius: 0 0 5px 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-icons img {
+            width: 100px;
+            height: 40px;
+            margin: 0 10px;
+        }
+
+        .feedback-form {
+            margin-top: 2rem;
+            background: #f8f9fa;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+
+        .feedback-form input, .feedback-form textarea, .feedback-form button {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .feedback-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .feedback-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .thank-you {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SarvInsure</h1>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="index.html">Profile</a>
+        <a href="policy.html">Policies</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <main>
+        <section class="section">
+            <h2>About Us</h2>
+            <p>SarvInsure is your all-in-one platform to organize, track, and manage your insurance policies. Our mission is to simplify the insurance experience by providing intuitive tools for policy management, reminders, and insightful analytics.</p>
+            <h3>Features</h3>
+            <ul>
+                <li>Track all your insurance policies in one place.</li>
+                <li>Get reminders for upcoming renewal dates.</li>
+                <li>View analytics to understand your insurance portfolio.</li>
+                <li>Easy-to-use interface for seamless management.</li>
+            </ul>
+            <h3>Contact Us</h3>
+            <p>If you have any questions or feedback, feel free to reach out at <a href="mailto:support@SarvInsure.com">support@SarvInsure.com</a>.</p>
+        </section>
+
+         <section class="section team-section">
+            <h3>Meet the Team</h3>
+            <div class="team-member">
+                <img src="john-doe.jpg" alt="John Doe">
+                <div class="team-member-info">
+                    <h4>Sarvagya Pathak</h4>
+                    <p>CEO - Visionary leader with 15+ years of experience in the insurance industry.</p>
+                    <div class="team-member-links">
+                        <a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
+                        <a href="https://twitter.com/johndoe" target="_blank">Twitter</a>
+                        <a href="https://facebook.com/johndoe" target="_blank">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="jane-smith.jpg" alt="Jane Smith">
+                <div class="team-member-info">
+                    <h4>Aditya Pathak</h4>
+                    <p>CTO - Oversees technology operations and ensures cutting-edge innovation.</p>
+                    <div class="team-member-links">
+                        <a href="https://linkedin.com/in/janesmith" target="_blank">LinkedIn</a>
+                        <a href="https://twitter.com/janesmith" target="_blank">Twitter</a>
+                        <a href="https://facebook.com/janesmith" target="_blank">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section feedback-section">
+            <h3>Send Feedback</h3>
+            <form class="feedback-form" onsubmit="handleFeedback(event)">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="message" rows="5" placeholder="Your Feedback" required></textarea>
+                <button type="submit">Submit Feedback</button>
+                <p id="feedback-response" class="thank-you" style="display: none;">Thank you for your feedback!</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SarvInsure. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="https://www.bajajfinserv.in/insurance"><img src="bajaj-finance.webp" alt="Insurance 1 Logo"></a>
+            <a href="https://www.hdfclife.com/"><img src="hdfc.png" alt="Insurance 2 Logo"></a>
+            <a href="https://www.policybazaar.com/?pb_source=google&pb_medium=cpc&pb_term=Insurance%20policy&pb_campaign=Insurance_generic00Generic&gad_source"><img src="policybazar.png" alt="Insurance 3 Logo"></a>
+        </div>
+        <p> Choosing the right insurance plan is essential to safeguard your financial health.</p>
+    </footer>
+
+    <script>
+        // Collapsible sections
+        document.querySelectorAll(".collapsible").forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("active");
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // Handle feedback submission
+        function handleFeedback(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
+
+            // Display thank-you message
+            const response = document.getElementById("feedback-response");
+            response.style.display = "block";
+
+            // Clear form fields
+            document.getElementById("name").value = "";
+            document.getElementById("message").value = "";
+
+            console.log(`Feedback from ${name}: ${message}`);
+        }
+    </script>
+</body>
+</html>
